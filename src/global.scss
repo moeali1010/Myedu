@@ -36,20 +36,18 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-
 ion-toolbar {
-    --background: #ab95f9;
-    height: 96px;
-    -webkit-padding-end: 20%;
-  }
-  
-  ion-header {
-    --box-shadow: none;
-  }
-  
-  ion-title {
-    --color: #fff;
-    padding-inline-start: 8%;
-    position: relative !important;
-  }
-  
+  --background: #ab95f9;
+  height: 96px;
+  -webkit-padding-end: 20%;
+}
+
+ion-header {
+  --box-shadow: none;
+}
+
+ion-title {
+  --color: #fff;
+  padding-inline-start: 7%;
+  position: relative !important;
+}
