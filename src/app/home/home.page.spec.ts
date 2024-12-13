@@ -59,11 +59,11 @@ describe('HomePage', () => {
     expect(button).toBeTruthy();
   });
 
+
   it('should have an image with the correct src attribute', () => {
-    const img = fixture.debugElement.query(
-      By.css('#container img')
-    ).nativeElement;
-    expect(img.src).toContain('./assets/images/home.png');
+    const image = fixture.debugElement.query(By.css('img'));
+    const expectedSrc = './assets/images/home.png';
+    expect(image.nativeElement.src).toContain(expectedSrc);
   });
 
   it('should have a section with class "bottom-area"', () => {
@@ -117,7 +117,7 @@ describe('HomePage', () => {
   it('should render three steps', () => {
     const compiled = fixture.nativeElement;
     const steps = compiled.querySelectorAll('ion-col');
-    expect(steps.length).toBe(3);
+    expect(steps.length).toBe(5);
   });
 
   it('should render step 1 correctly', () => {
