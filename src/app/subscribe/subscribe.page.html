@@ -27,32 +27,20 @@
           </ul>
           <hr />
           <form [formGroup]="form">
-            <h2>Contact Information</h2>
+            <div class="contact-form-title">Contact Information</div>
             <div>
               <label for="">Your Name</label>
-              <input
-                type="text"
-                placeholder="e.g Osama Alshathri"
-                formControlName="contact_name"
-              />
+              <input type="text" placeholder="e.g Osama Alshathri" formControlName="contact_name" />
             </div>
             <div>
               <label for="">Email</label>
-              <input
-                type="email"
-                placeholder="Osama@gmail.com"
-                formControlName="contact_email"
-              />
+              <input type="email" placeholder="Osama@gmail.com" formControlName="contact_email" />
             </div>
 
-            <h2>Child’s Information</h2>
+            <div class="contact-form-title">Child’s Information</div>
             <div>
               <label for="">Child’s Full Name</label>
-              <input
-                type="text"
-                placeholder="e.g Sarah Mohammad"
-                formControlName="child_name"
-              />
+              <input type="text" placeholder="e.g Sarah Mohammad" formControlName="child_name" />
             </div>
             <div>
               <label for="">Child’s Date of Birth</label>
@@ -61,41 +49,21 @@
             <section class="dob">
               <aside>
                 <select formControlName="child_dob_day">
-                  <option
-                    class="option"
-                    value="{{item}}"
-                    *ngFor="let item of days"
-                  >
+                  <option class="option" value="{{item}}" *ngFor="let item of days">
                     {{item}}
                   </option>
                 </select>
               </aside>
               <aside>
-                <select
-                  formControlName="child_dob_month"
-                  #month
-                  (change)="displayDays(year.value , month.value )"
-                >
-                  <option
-                    class="option"
-                    value="{{item}}"
-                    *ngFor="let item of months"
-                  >
+                <select formControlName="child_dob_month" #month (change)="displayDays(year.value , month.value )">
+                  <option class="option" value="{{item}}" *ngFor="let item of months">
                     {{item}}
                   </option>
                 </select>
               </aside>
               <aside>
-                <select
-                  formControlName="child_dob_year"
-                  #year
-                  (change)="displayDays(year.value , month.value )"
-                >
-                  <option
-                    class="option"
-                    value="{{item}}"
-                    *ngFor="let item of pastYears"
-                  >
+                <select formControlName="child_dob_year" #year (change)="displayDays(year.value , month.value )">
+                  <option class="option" value="{{item}}" *ngFor="let item of pastYears">
                     {{item}}
                   </option>
                 </select>
@@ -121,54 +89,38 @@
             <div>
               <label for="">Gender</label>
             </div>
-            <ion-radio-group formControlName="child_gender">
-              <section class="gender">
-                <aside>
-                  <ion-item lines="none">
-                    <ion-label aria-label="boy">Boy</ion-label>
-                    <ion-radio slot="end" value="boy"></ion-radio>
-                  </ion-item>
-                </aside>
-                <aside>
-                  <ion-item lines="none">
-                    <ion-label aria-label="Girl">Girl</ion-label>
-                    <ion-radio slot="end" value="girl"></ion-radio>
-                  </ion-item>
-                </aside>
-              </section>
-            </ion-radio-group>
+         
 
-            <h2>As a parent select any 3 topics</h2>
+
+            <ion-radio-group value="gender" formControlName="child_gender">
+
+              <section class="gender">
+
+                <ion-radio value="boy">Boy</ion-radio>
+
+                <ion-radio value="girl">Girl</ion-radio>
+
+              </section>
+
+
+
+            </ion-radio-group>
+           <div class="contact-form-title">As a parent select any 3 topics</div>
 
             <section class="topics">
-              <div
-                (click)="addToTopics('arabic')"
-                ngClass="{{topics.includes('arabic') ? 'selected' : ''}}"
-              >
+              <div (click)="addToTopics('arabic')" ngClass="{{topics.includes('arabic') ? 'selected' : ''}}">
                 Arabic
               </div>
-              <div
-                (click)="addToTopics('islamic')"
-                ngClass="{{topics.includes('islamic') ? 'selected' : ''}}"
-              >
+              <div (click)="addToTopics('islamic')" ngClass="{{topics.includes('islamic') ? 'selected' : ''}}">
                 Islamic
               </div>
-              <div
-                (click)="addToTopics('english')"
-                ngClass="{{topics.includes('english') ? 'selected' : ''}}"
-              >
+              <div (click)="addToTopics('english')" ngClass="{{topics.includes('english') ? 'selected' : ''}}">
                 English
               </div>
-              <div
-                (click)="addToTopics('history')"
-                ngClass="{{topics.includes('history') ? 'selected' : ''}}"
-              >
+              <div (click)="addToTopics('history')" ngClass="{{topics.includes('history') ? 'selected' : ''}}">
                 History
               </div>
-              <div
-                (click)="addToTopics('sports')"
-                ngClass="{{topics.includes('sports') ? 'selected' : ''}}"
-              >
+              <div (click)="addToTopics('sports')" ngClass="{{topics.includes('sports') ? 'selected' : ''}}">
                 Sports
               </div>
             </section>
