@@ -149,7 +149,6 @@
       margin-bottom: 134px;
       @media (max-width: 768px) {
         margin-bottom: 60px;
-  
       }
     }
   }
@@ -157,10 +156,7 @@
     padding-top: 70px;
     background: #fff9e6;
   }
-
-
 }
-
 
 button {
   color: #896af9;
@@ -183,5 +179,147 @@ button {
     font-weight: 900;
     line-height: 23px;
     border-radius: 12px;
+  }
+}
+
+.footer {
+  max-width: 1312px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  padding-top: 100px;
+  @media (max-width: 768px) {
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 60px;
+  }
+  hr {
+    margin-bottom: 40px;
+    border: 0;
+    border-top: 1px solid var(--Black, #000);
+  }
+
+  img {
+    display: none;
+    padding-bottom: 40px;
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .footer-menu {
+    display: none;
+    padding-bottom: 60px;
+    @media (max-width: 768px) {
+      display: block;
+    }
+    a {
+      display: block;
+      width: 100%;
+      font-family: "Nunito", serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 34px;
+      text-align: left;
+      color: #000000;
+      text-decoration: none;
+    }
+  }
+
+  .subscribe {
+    div {
+      display: none;
+      &:nth-of-type(1) {
+        @media (max-width: 768px) {
+          display: block;
+          font-family: "Nunito", serif;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 24px;
+          text-align: left;
+        }
+      }
+
+      &:nth-of-type(2) {
+        @media (max-width: 768px) {
+          padding-top: 10px;
+          display: block;
+          font-family: Nunito;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 18px;
+          text-align: left;
+          padding-bottom: 60px;
+          a {
+            color: #000000;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    input {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+        width: 100%;
+        height: 48px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: #505050;
+        padding-left: 15px;
+      }
+    }
+
+    button {
+      display: none;
+      @media (max-width: 768px) {
+        background: #fff;
+        border: 1px solid #000000;
+        box-shadow: none;
+        border-radius: 0;
+        margin-top: 16px;
+        width: 100%;
+        display: block;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #000000;
+        text-align: center;
+      }
+    }
+  }
+
+  .footer-links {
+    a {
+      display: inline-block;
+      font-family: "Nunito", serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      text-decoration: underline;
+      padding-right: 24px;
+      color: #000000;
+      @media (max-width: 768px) {
+        display: block;
+        width: 100%;
+        padding-bottom: 24px;
+      }
+    }
+  }
+
+  .copy-right {
+    font-family: "Nunito", serif;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: right;
+    @media (max-width: 768px) {
+      text-align: left;
+    }
   }
 }

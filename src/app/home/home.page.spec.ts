@@ -108,7 +108,6 @@ describe('HomePage', () => {
     );
   });
 
-
   it('should render ion-grid with steps', () => {
     const compiled = fixture.nativeElement;
     const grid = compiled.querySelector('ion-grid.steps');
@@ -124,24 +123,35 @@ describe('HomePage', () => {
   it('should render step 1 correctly', () => {
     const compiled = fixture.nativeElement;
     const step1 = compiled.querySelectorAll('ion-col')[0];
-    expect(step1.querySelector('.title').textContent).toContain('Step 1: Subscribe');
-    expect(step1.querySelector('.content').textContent).toContain('Select a subscription plan that suits your child\'s learning needs and preferences.');
+    expect(step1.querySelector('.title').textContent).toContain(
+      'Step 1: Subscribe'
+    );
+    expect(step1.querySelector('.content').textContent).toContain(
+      "Select a subscription plan that suits your child's learning needs and preferences."
+    );
   });
 
   it('should render step 2 correctly', () => {
     const compiled = fixture.nativeElement;
     const step2 = compiled.querySelectorAll('ion-col')[1];
-    expect(step2.querySelector('.title').textContent).toContain('Step 2: Personalise Your Box');
-    expect(step2.querySelector('.content').textContent).toContain('Tell us about your child\'s age, interests, and learning goals, and we\'ll customize their surprise box accordingly.');
+    expect(step2.querySelector('.title').textContent).toContain(
+      'Step 2: Personalise Your Box'
+    );
+    expect(step2.querySelector('.content').textContent).toContain(
+      "Tell us about your child's age, interests, and learning goals, and we'll customize their surprise box accordingly."
+    );
   });
 
   it('should render step 3 correctly', () => {
     const compiled = fixture.nativeElement;
     const step3 = compiled.querySelectorAll('ion-col')[2];
-    expect(step3.querySelector('.title').textContent).toContain('Step 3: Receive Your Surprise Box');
-    expect(step3.querySelector('.content').textContent).toContain('Sit back and relax as your child eagerly awaits the arrival of their monthly surprise box filled with engaging learning materials.');
+    expect(step3.querySelector('.title').textContent).toContain(
+      'Step 3: Receive Your Surprise Box'
+    );
+    expect(step3.querySelector('.content').textContent).toContain(
+      'Sit back and relax as your child eagerly awaits the arrival of their monthly surprise box filled with engaging learning materials.'
+    );
   });
-
 
   it('should have a button with text "Subscribe Now" and routerLink to /subscribe', () => {
     const buttons = fixture.debugElement.queryAll(
@@ -149,10 +159,55 @@ describe('HomePage', () => {
     );
     expect(buttons.length).toBe(2);
 
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
       const nativeButton = button.nativeElement;
       expect(nativeButton).toBeTruthy();
       expect(nativeButton.textContent).toContain('Subscribe Now');
     });
+  });
+
+  it('should create and present a success alert', async () => {
+    const alertSpy = spyOn(
+      component['alertController'],
+      'create'
+    ).and.callThrough();
+    await component.presentSuccessAlert();
+    expect(alertSpy).toHaveBeenCalledWith({
+      header: 'Success',
+      subHeader: 'Thanks you , your email has been saved',
+      buttons: ['OK'],
+    });
+  });
+
+  it('should reset the form after presenting success alert', async () => {
+    spyOn(component['alertController'], 'create').and.returnValue(
+      Promise.resolve({
+        present: () => Promise.resolve(),
+      } as any)
+    );
+    const formResetSpy = spyOn(component.form, 'reset');
+    await component.presentSuccessAlert();
+    expect(formResetSpy).toHaveBeenCalled();
+  });
+
+  it('should initialize the form with subscribeEemail control', () => {
+    component.initializeForm();
+    expect(component.form.contains('subscribeEemail')).toBeTruthy();
+  });
+
+  it('should make subscribeEemail control required', () => {
+    component.initializeForm();
+    const control = component.form.get('subscribeEemail');
+    control.setValue('');
+    expect(control.valid).toBeFalsy();
+  });
+
+  it('should validate subscribeEemail control as email', () => {
+    component.initializeForm();
+    const control = component.form.get('subscribeEemail');
+    control.setValue('invalidEmail');
+    expect(control.valid).toBeFalsy();
+    control.setValue('valid@example.com');
+    expect(control.valid).toBeTruthy();
   });
 });
