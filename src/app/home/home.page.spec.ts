@@ -21,4 +21,12 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should have a logo image in the header', () => {
+    const compiled = fixture.nativeElement;
+    const logoImg = compiled.querySelector('ion-header ion-title img');
+    expect(logoImg).toBeTruthy();
+    expect(logoImg.src).toContain('logo.svg');
+  });
 });
