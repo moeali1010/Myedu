@@ -1,0 +1,217 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <div id="container-header">
+        <img src="./assets/images/logo.svg" alt="logo" />
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-sm="8" class="left">
+          <h1>Subscribe</h1>
+          <div class="section-desc">to our Monthly Surprise Box</div>
+          <ul class="breadcrumb">
+            <li>Cart</li>
+            <li><ion-icon name="chevron-forward-outline"></ion-icon></li>
+            <li>Information</li>
+            <li><ion-icon name="chevron-forward-outline"></ion-icon></li>
+            <li>Shipping</li>
+            <li><ion-icon name="chevron-forward-outline"></ion-icon></li>
+            <li>Payment</li>
+          </ul>
+          <hr />
+          <form [formGroup]="form">
+            <h2>Contact Information</h2>
+            <div>
+              <label for="">Your Name</label>
+              <input
+                type="text"
+                placeholder="e.g Osama Alshathri"
+                formControlName="contact_name"
+              />
+            </div>
+            <div>
+              <label for="">Email</label>
+              <input
+                type="email"
+                placeholder="Osama@gmail.com"
+                formControlName="contact_email"
+              />
+            </div>
+
+            <h2>Child’s Information</h2>
+            <div>
+              <label for="">Child’s Full Name</label>
+              <input
+                type="text"
+                placeholder="e.g Sarah Mohammad"
+                formControlName="child_name"
+              />
+            </div>
+            <div>
+              <label for="">Child’s Date of Birth</label>
+            </div>
+
+            <section class="dob">
+              <aside>
+                <select formControlName="child_dob_day">
+                  <option
+                    class="option"
+                    value="{{item}}"
+                    *ngFor="let item of days"
+                  >
+                    {{item}}
+                  </option>
+                </select>
+              </aside>
+              <aside>
+                <select
+                  formControlName="child_dob_month"
+                  #month
+                  (change)="displayDays(year.value , month.value )"
+                >
+                  <option
+                    class="option"
+                    value="{{item}}"
+                    *ngFor="let item of months"
+                  >
+                    {{item}}
+                  </option>
+                </select>
+              </aside>
+              <aside>
+                <select
+                  formControlName="child_dob_year"
+                  #year
+                  (change)="displayDays(year.value , month.value )"
+                >
+                  <option
+                    class="option"
+                    value="{{item}}"
+                    *ngFor="let item of pastYears"
+                  >
+                    {{item}}
+                  </option>
+                </select>
+              </aside>
+            </section>
+
+            <div class="grade">
+              <label for="">Grade</label>
+              <select formControlName="child_grade">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="">Gender</label>
+            </div>
+            <ion-radio-group formControlName="child_gender">
+              <section class="gender">
+                <aside>
+                  <ion-item lines="none">
+                    <ion-label aria-label="boy">Boy</ion-label>
+                    <ion-radio slot="end" value="boy"></ion-radio>
+                  </ion-item>
+                </aside>
+                <aside>
+                  <ion-item lines="none">
+                    <ion-label aria-label="Girl">Girl</ion-label>
+                    <ion-radio slot="end" value="girl"></ion-radio>
+                  </ion-item>
+                </aside>
+              </section>
+            </ion-radio-group>
+
+            <h2>As a parent select any 3 topics</h2>
+
+            <section class="topics">
+              <div
+                (click)="addToTopics('arabic')"
+                ngClass="{{topics.includes('arabic') ? 'selected' : ''}}"
+              >
+                Arabic
+              </div>
+              <div
+                (click)="addToTopics('islamic')"
+                ngClass="{{topics.includes('islamic') ? 'selected' : ''}}"
+              >
+                Islamic
+              </div>
+              <div
+                (click)="addToTopics('english')"
+                ngClass="{{topics.includes('english') ? 'selected' : ''}}"
+              >
+                English
+              </div>
+              <div
+                (click)="addToTopics('history')"
+                ngClass="{{topics.includes('history') ? 'selected' : ''}}"
+              >
+                History
+              </div>
+              <div
+                (click)="addToTopics('sports')"
+                ngClass="{{topics.includes('sports') ? 'selected' : ''}}"
+              >
+                Sports
+              </div>
+            </section>
+            <button (click)="submitForm()">Continue to payment</button>
+          </form>
+        </ion-col>
+        <ion-col size="12" size-sm="4" class="right">
+          <h1>Summary</h1>
+          <div class="section-desc">of your Monthly Surprise Box</div>
+          <div class="white-box">
+            <aside>
+              <div class="item">Mystery Box</div>
+              <div class="item"><span>SAR</span> 456</div>
+            </aside>
+            <aside>
+              <div class="amount">X 1</div>
+              <div class="amount">Monthly</div>
+            </aside>
+          </div>
+
+          <aside>
+            <div class="bill-item">Subtotal</div>
+            <div class="item"><span>SAR</span> 456</div>
+          </aside>
+
+          <aside>
+            <div class="bill-item">Shipping</div>
+            <div class="free">free</div>
+          </aside>
+
+          <aside>
+            <div class="bill-item">Taxes</div>
+            <div class="item"><span>SAR</span> 4.0</div>
+          </aside>
+
+          <hr />
+
+          <aside>
+            <div class="total">Total</div>
+            <div class="total-amount"><span>SAR</span> 460</div>
+          </aside>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

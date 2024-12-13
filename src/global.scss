@@ -36,6 +36,8 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+@import "./assets/scss/_header.scss";
+
 ion-toolbar {
   --background: #ab95f9;
   height: 96px;
