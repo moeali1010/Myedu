@@ -146,6 +146,11 @@
 
     button {
       margin-top: 56px;
+      margin-bottom: 134px;
+      @media (max-width: 768px) {
+        margin-bottom: 60px;
+  
+      }
     }
   }
   @media (max-width: 768px) {
@@ -176,6 +181,7 @@ button {
     height: 48px;
     font-size: 18px;
     font-weight: 900;
-    line-height: 26px;
+    line-height: 23px;
+    border-radius: 12px;
   }
 }

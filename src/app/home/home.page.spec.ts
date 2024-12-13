@@ -141,4 +141,18 @@ describe('HomePage', () => {
     expect(step3.querySelector('.title').textContent).toContain('Step 3: Receive Your Surprise Box');
     expect(step3.querySelector('.content').textContent).toContain('Sit back and relax as your child eagerly awaits the arrival of their monthly surprise box filled with engaging learning materials.');
   });
+
+
+  it('should have a button with text "Subscribe Now" and routerLink to /subscribe', () => {
+    const buttons = fixture.debugElement.queryAll(
+      By.css('button[routerLink="/subscribe"]')
+    );
+    expect(buttons.length).toBe(2);
+
+    buttons.forEach(button => {
+      const nativeButton = button.nativeElement;
+      expect(nativeButton).toBeTruthy();
+      expect(nativeButton.textContent).toContain('Subscribe Now');
+    });
+  });
 });
