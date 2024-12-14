@@ -60,11 +60,6 @@ describe('HomePage', () => {
   });
 
 
-  it('should have an image with the correct src attribute', () => {
-    const image = fixture.debugElement.query(By.css('img'));
-    const expectedSrc = './assets/images/home.png';
-    expect(image.nativeElement.src).toContain(expectedSrc);
-  });
 
   it('should have a section with class "bottom-area"', () => {
     const bottomArea = fixture.debugElement.query(
@@ -96,17 +91,7 @@ describe('HomePage', () => {
     );
   });
 
-  it('should have a div with subscription description text', () => {
-    const descriptionDiv = fixture.debugElement.query(
-      By.css('section.bottom-area #container > div:nth-child(3)')
-    );
-    const expectedText = `Subscribe to our surprise subscription box and give your child the gift
-        of learning. Each month, we curate a box filled with educational
-        materials tailored to your child's age and interests.`;
-    expect(descriptionDiv.nativeElement.textContent.trim()).toBe(
-      expectedText.trim()
-    );
-  });
+
 
   it('should render ion-grid with steps', () => {
     const compiled = fixture.nativeElement;

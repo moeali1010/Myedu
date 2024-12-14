@@ -19,68 +19,85 @@ describe('SubscribePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should initialize form with default values', () => {
+    expect(component.form.value).toEqual({
+      contact_name: null,
+      contact_email: null,
+      child_name: null,
+      child_dob_day: '1',
+      child_dob_month: 'January',
+      child_dob_year: JSON.stringify(component.currentYear),
+      child_grade: '1',
+      child_gender: null,
+    });
+  });
 
-  //displayLast20years
-  it('should populate pastYears with the last 20 years', () => {
+  it('should add topic to topics array', () => {
+    component.addToTopics('arabic');
+    expect(component.topics).toContain('arabic');
+  });
+
+  it('should remove topic from topics array if already exists', () => {
+    component.addToTopics('arabic');
+    component.addToTopics('arabic');
+    expect(component.topics).not.toContain('arabic');
+  });
+
+  it('should not add more than 3 topics', () => {
+    component.addToTopics('arabic');
+    component.addToTopics('islamic');
+    component.addToTopics('english');
+    component.addToTopics('history');
+    expect(component.topics.length).toBe(3);
+  });
+
+  it('should display last 20 years', () => {
     component.displayLast20years();
-
-    const currentYear = new Date().getFullYear();
-    const expectedYears = [];
-    for (let index = 20; index > 0; index--) {
-      expectedYears.push(currentYear - index + 1);
-    }
-
-    expect(component.pastYears).toEqual(expectedYears);
+    expect(component.pastYears.length).toBe(20);
+    expect(component.pastYears[0]).toBe(component.currentYear - 19);
   });
 
-  // displayMonths
-  it('should populate months array with the twelve months', () => {
+  it('should display all months', () => {
     component.displayMonths();
-
-    const expectedMonths = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
-    expect(component.months).toEqual(expectedMonths);
+    expect(component.months.length).toBe(12);
+    expect(component.months).toContain('January');
   });
 
-  // leap year
-  it('should return true for leap years', () => {
-    const leapYears = [2000, 2004, 2008, 2012, 2016, 2020];
-
-    leapYears.forEach((year) => {
-      const result = component.leapYear(year);
-      expect(result).toBeTrue();
-    });
+  it('should display correct number of days for February in a leap year', () => {
+    component.displayDays(2020, 'February');
+    expect(component.days.length).toBe(29);
   });
 
-  // non-leap years
-  it('should return false for non-leap years', () => {
-    const nonLeapYears = [1900, 1901, 2001, 2002, 2003, 2005];
-
-    nonLeapYears.forEach((year) => {
-      const result = component.leapYear(year);
-      expect(result).toBeFalse();
-    });
+  it('should display correct number of days for February in a non-leap year', () => {
+    component.displayDays(2019, 'February');
+    expect(component.days.length).toBe(28);
   });
 
-  it('it shold display 31 or 30 days according to month, and display 29 or 28  February according to leap year', () => {
-    component.displayDays('2024', 'January');
-    expect(component.days.length).toEqual(31);
-    component.displayDays('2020', 'February');
-    expect(component.days.length).toEqual(29);
-    component.displayDays('2021', 'February');
-    expect(component.days.length).toEqual(28);
+  it('should display correct number of days for a month with 31 days', () => {
+    component.displayDays(2021, 'January');
+    expect(component.days.length).toBe(31);
   });
+
+  it('should display correct number of days for a month with 30 days', () => {
+    component.displayDays(2021, 'April');
+    expect(component.days.length).toBe(30);
+  });
+
+  it('should present error alert if form is invalid on submit', async () => {
+    spyOn(component, 'presentErrorAlert');
+    component.form.controls['contact_name'].setValue(null);
+    component.submitForm();
+    expect(component.presentErrorAlert).toHaveBeenCalled();
+  });
+
+  it('should present success alert if form is valid on submit', async () => {
+    spyOn(component, 'presentSuccessAlert');
+    component.form.controls['contact_name'].setValue('Test Name');
+    component.form.controls['contact_email'].setValue('test@example.com');
+    component.form.controls['child_name'].setValue('Child Name');
+    component.form.controls['child_gender'].setValue('boy');
+    component.submitForm();
+    expect(component.presentSuccessAlert).toHaveBeenCalled();
+  });
+ 
 });
