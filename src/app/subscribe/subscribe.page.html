@@ -7,14 +7,13 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <ion-grid>
+  <section id="container">
+
+    <ion-grid class="no-padding">
       <ion-row>
         <ion-col size="12" size-sm="8" class="left">
-          <h1>Subscribe</h1>
+          <div class="section-title">Subscribe</div>
           <div class="section-desc">to our Monthly Surprise Box</div>
           <ul class="breadcrumb">
             <li>Cart</li>
@@ -26,86 +25,86 @@
             <li>Payment</li>
           </ul>
           <hr />
+
           <form [formGroup]="form">
-            <div class="contact-form-title">Contact Information</div>
-            <div>
-              <label for="">Your Name</label>
-              <input type="text" placeholder="e.g Osama Alshathri" formControlName="contact_name" />
-            </div>
-            <div>
-              <label for="">Email</label>
-              <input type="email" placeholder="Osama@gmail.com" formControlName="contact_email" />
+            <div class="section-title2 pb-10">Contact Information</div>
+            <div class="form-item">
+              <label>Your Name</label>
+              <ion-input fill="outline" placeholder="e.g Osama Alshathri" formControlName="contact_name"></ion-input>
             </div>
 
-            <div class="contact-form-title">Child’s Information</div>
-            <div>
-              <label for="">Child’s Full Name</label>
-              <input type="text" placeholder="e.g Sarah Mohammad" formControlName="child_name" />
-            </div>
-            <div>
-              <label for="">Child’s Date of Birth</label>
+            <div class="form-item">
+              <label>Email</label>
+              <ion-input fill="outline" placeholder="Osama@gmail.com" formControlName="contact_email"></ion-input>
             </div>
 
-            <section class="dob">
-              <aside>
-                <select formControlName="child_dob_day">
-                  <option class="option" value="{{item}}" *ngFor="let item of days">
-                    {{item}}
-                  </option>
-                </select>
-              </aside>
-              <aside>
-                <select formControlName="child_dob_month" #month (change)="displayDays(year.value , month.value )">
-                  <option class="option" value="{{item}}" *ngFor="let item of months">
-                    {{item}}
-                  </option>
-                </select>
-              </aside>
-              <aside>
-                <select formControlName="child_dob_year" #year (change)="displayDays(year.value , month.value )">
-                  <option class="option" value="{{item}}" *ngFor="let item of pastYears">
-                    {{item}}
-                  </option>
-                </select>
-              </aside>
-            </section>
+            <div class="section-title2 pb-10">Child’s Information</div>
 
-            <div class="grade">
-              <label for="">Grade</label>
-              <select formControlName="child_grade">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
+            <div class="form-item">
+              <label>Child’s Full Name </label>
+              <ion-input fill="outline" placeholder="e.g Sarah Mohammad" formControlName="child_name"></ion-input>
             </div>
 
-            <div>
-              <label for="">Gender</label>
-            </div>
-         
+            <div class="form-item">
+              <label> Child’s Date of Birth </label>
+              <section class="dob">
 
 
-            <ion-radio-group value="gender" formControlName="child_gender">
 
-              <section class="gender">
+                <ion-select value="child_dob_day" formControlName="child_dob_day">
+                  <ion-select-option value="{{item}}" *ngFor="let item of days">
+                    {{item}}</ion-select-option>
+                </ion-select>
 
-                <ion-radio value="boy">Boy</ion-radio>
 
-                <ion-radio value="girl">Girl</ion-radio>
+
+                <ion-select value="child_dob_month" formControlName="child_dob_month">
+                  <ion-select-option value="{{item}}" *ngFor="let item of months">{{item}}</ion-select-option>
+                </ion-select>
+
+
+
+
+                <ion-select value="child_dob_year" formControlName="child_dob_year">
+                  <ion-select-option value="{{item}}" *ngFor="let item of pastYears"> {{item}}</ion-select-option>
+
+                </ion-select>
+
+
 
               </section>
 
+            </div>
+
+            <div class="form-item">
+              <label> Grade </label>
+              <ion-select value="child_grade" formControlName="child_grade" class="child_grade">
+                <ion-select-option value="1">1</ion-select-option>
+                <ion-select-option value="2">2</ion-select-option>
+                <ion-select-option value="3">3</ion-select-option>
+                <ion-select-option value="4">4</ion-select-option>
+                <ion-select-option value="5">5</ion-select-option>
+                <ion-select-option value="6">6</ion-select-option>
+                <ion-select-option value="7">7</ion-select-option>
+                <ion-select-option value="8">8</ion-select-option>
+                <ion-select-option value="9">9</ion-select-option>
+                <ion-select-option value="10">10</ion-select-option>
+              </ion-select>
+            </div>
 
 
-            </ion-radio-group>
-           <div class="contact-form-title">As a parent select any 3 topics</div>
+            <div class="form-item">
+              <label>Gender</label>
+              <ion-radio-group value="gender" formControlName="child_gender">
+                <section class="gender">
+                  <ion-radio value="boy">Boy</ion-radio>
+                  <ion-radio value="girl">Girl</ion-radio>
+                </section>
+              </ion-radio-group>
+            </div>
+
+
+            <div class="section-title2 topics-section pb-10">  As a parent select any 3 topics </div>
 
             <section class="topics">
               <div (click)="addToTopics('arabic')" ngClass="{{topics.includes('arabic') ? 'selected' : ''}}">
@@ -124,12 +123,13 @@
                 Sports
               </div>
             </section>
-            <button (click)="submitForm()">Continue to payment</button>
+            <button (click)="submitForm()" class="primary width100">Continue to payment</button>
           </form>
         </ion-col>
         <ion-col size="12" size-sm="4" class="right">
-          <h1>Summary</h1>
+          <div class="section-title">Summary</div>
           <div class="section-desc">of your Monthly Surprise Box</div>
+
           <div class="white-box">
             <aside>
               <div class="item">Mystery Box</div>
@@ -141,29 +141,32 @@
             </aside>
           </div>
 
-          <aside>
+          <aside class="bill">
             <div class="bill-item">Subtotal</div>
-            <div class="item"><span>SAR</span> 456</div>
+            <div class="price"><span>SAR</span> 456</div>
           </aside>
 
-          <aside>
+          <aside  class="bill">
             <div class="bill-item">Shipping</div>
-            <div class="free">free</div>
+            <div class="price free">free</div>
           </aside>
 
-          <aside>
+          <aside  class="bill">
             <div class="bill-item">Taxes</div>
-            <div class="item"><span>SAR</span> 4.0</div>
+            <div class="price"><span>SAR</span> 4.0</div>
           </aside>
 
           <hr />
-
-          <aside>
+          <aside class="bill">
             <div class="total">Total</div>
             <div class="total-amount"><span>SAR</span> 460</div>
           </aside>
+
+          <button (click)="submitForm()" class="primary width100 ">Continue to payment</button>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+
+
+  </section>
 </ion-content>

@@ -21,6 +21,7 @@ export class SubscribePage implements OnInit {
   ) {}
 
   ngOnInit() {
+
     this.initializeForm();
     this.displayLast20years();
     this.displayMonths();
@@ -37,8 +38,8 @@ export class SubscribePage implements OnInit {
       child_name: new FormControl(null, [Validators.required]),
       child_dob_day: new FormControl('1', [Validators.required]),
       child_dob_month: new FormControl('January', [Validators.required]),
-      child_dob_year: new FormControl(this.currentYear, [Validators.required]),
-      child_grade: new FormControl(null, [Validators.required]),
+      child_dob_year: new FormControl( JSON.stringify(this.currentYear) , [Validators.required]),
+      child_grade: new FormControl('1', [Validators.required]),
       child_gender: new FormControl(null, [Validators.required]),
     });
   }

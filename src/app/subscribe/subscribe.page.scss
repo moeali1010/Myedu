@@ -1,58 +1,76 @@
 #container {
   max-width: 1270px;
-  margin: 135px auto;
+  margin: 138px auto;
   border: 1px solid #b9bcdd;
   border-radius: 20px;
 
   @media (max-width: 768px) {
-    margin-top: 45px !important ;
-  }
-
-  ion-grid {
-    padding: 0;
-  }
-
-  .right {
-    background: #f1edfe;
-    padding: 32px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    aside {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
+    margin-top: 48px !important ;
+    margin-right: 5%;
+    margin-left: 5%;
   }
 
   .left {
-    padding-left: 20px;
-    padding-top: 32px;
-    padding-right: 35px;
+    padding-top: 30px;
+    padding-left: 36px;
+    padding-right: 36px;
     @media (max-width: 768px) {
-      padding-left: 15px;
+      padding-left: 26px;
+      padding-right: 26px;
+      button{
+        display: none;
+      
+      }
+    }
+
+  
+  }
+
+  .right {
+    padding-top: 30px;
+    padding-left: 36px;
+    padding-right: 36px;
+    background: #f1edfe;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    button{
+      display: none;
+    
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 5%;
+      margin-left: 0;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      button{
+        display: block;
+      
+      }
     }
   }
-  h1 {
+
+  .section-title {
     font-family: "Nunito", serif;
     font-size: 24px;
     font-weight: 700;
     line-height: 32px;
-    margin: 0;
   }
-  h2 {
+
+  .section-title2 {
+    font-family: "Nunito", serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  .section-desc {
     font-family: "Nunito", serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    margin: 0;
   }
-  .section-desc {
-    color: #202124;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px; /* 150% */
-    letter-spacing: 0.1px;
-  }
+
   .breadcrumb {
     margin: 0;
     padding: 18px 0px;
@@ -81,12 +99,10 @@
     border-top: 1px solid #d1c5fb;
   }
 
-  .contact-form-title {
-    font-family: "Nunito", serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 32px;
-    margin-bottom: 10px;
+  form {
+    .form-item {
+      padding-bottom: 20px;
+    }
   }
 
   label {
@@ -94,51 +110,25 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
-    text-align: left;
-  }
-
-  input {
-    width: 100%;
-    height: 44pxpx;
-    padding: 10px 14px 10px 14px;
-    border-radius: 8px;
-    border: 1px solid #d0d5dd;
-    font-family: "Nunito", serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    margin-bottom: 30px;
-  }
-
-  select {
-    border-radius: 8px;
-    border: 1px solid var(--gray-300, #d0d5dd);
-    background: var(--base-white, #fff);
-    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-    width: 100%;
-    padding: 10px 14px;
   }
 
   .dob {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 24px;
-    aside {
+    ion-select {
       width: 32%;
     }
   }
 
-  .grade {
-    padding-bottom: 24px;
+  .child_grade {
+    &::part(text) {
+      width: 850px;
+    }
   }
 
   .gender {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 24px;
 
     ion-radio {
       width: 49%;
@@ -150,9 +140,8 @@
     }
   }
 
-  ion-item {
-    border-radius: 8px;
-    border: 1px solid var(--gray-300, #d0d5dd);
+  .topics-section {
+    padding-top: 42px;
   }
 
   .topics {
@@ -162,6 +151,7 @@
     gap: 8px;
     align-self: stretch;
     flex-wrap: wrap;
+    padding-bottom: 40px;
     div {
       border-radius: 48px;
       border: 1px solid #e1e3e6;
@@ -169,21 +159,23 @@
       box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
       color: var(--gray-500, #667085);
       font-size: 16px;
-      padding: 4px 20px;
+      padding: 4px 19px;
       font-weight: 400;
-      line-height: 24px; /* 150% */
+      line-height: 24px;
       cursor: pointer;
+      font-family: "Nunito", serif;
     }
     div.selected {
       border: 1px solid #63f;
       color: #6633ff;
+      background: #f4f1fe;
     }
   }
-  button {
+
+  .primary {
     width: 100%;
-    margin-top: 95px;
     border: 1px solid #896af9;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
   }
 
   .white-box {
@@ -191,7 +183,7 @@
     border-radius: 8px;
     height: 96px;
     padding: 16px;
-    margin-top: 24px;
+    margin-top: 26px;
     margin-bottom: 24px;
     aside {
       display: flex;
@@ -204,52 +196,67 @@
       line-height: 16px; /* 133.333% */
       color: #838383;
     }
+
+    .item {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+
+      span {
+        font-family: "Nunito", serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
   }
 
-  .item {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px; /* 150% */
-    span {
+  .bill {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    .bill-item {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+    }
+    .price {
+      font-family: "Nunito", serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+
+      span {
+        font-weight: 400;
+      }
+    }
+    .free {
+      color: #707070;
+      font-size: 14px;
       font-weight: 400;
     }
-  }
 
-  .bill-item {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 21px */
-  }
-  .free {
-    color: var(--text-subdued, #707070);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 150%; /* 21px */
-  }
-  .total {
-    color: var(--text-text-emphasized, #333);
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 150%; /* 25.5px */
-  }
-  .total-amount {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    span {
-      font-weight: 400;
+    .total {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 26px;
+    }
+    .total-amount {
+      font-family: "Nunito", serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+
+      span {
+        font-weight: 400;
+      }
     }
   }
-}
 
-@media (max-width: 768px) {
-  #container {
-    margin: 16px;
-    .right {
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 20px;
-    }
+  hr {
+    margin-bottom: 16px;
+    border: 0;
+    border-top: 1px solid #d1c5fb;
   }
 }
 

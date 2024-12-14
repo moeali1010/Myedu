@@ -38,7 +38,12 @@
 
 @import "./assets/scss/_header.scss";
 @import "./assets/scss/_buttons.scss";
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import "./assets/scss/_input.scss";
+@import "./assets/scss/_padding.scss";
+@import "./assets/scss/_select.scss";
+ 
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
 ion-toolbar {
   --background: #ab95f9;
@@ -56,6 +61,11 @@ ion-title {
   position: relative !important;
 }
 
-html, body {
+html,
+body {
   font-family: "Nunito", serif;
+}
+
+.no-padding {
+  padding: 0;
 }

@@ -13,7 +13,7 @@
     <div id="container">
       <div>Discover the magic of our surprise box</div>
       <div>Unleash your child's curiosity with our educational subscription box filled with fun and learning.</div>
-      <button routerLink="/subscribe">Subscribe Now</button>
+      <button routerLink="/subscribe" class="primary">Subscribe Now</button>
       <img src="./assets/images/home.png" alt="" />
     </div>
   </section>
@@ -80,7 +80,7 @@
         </ion-row>
       </ion-grid>
 
-      <button routerLink="/subscribe">Subscribe Now</button>
+      <button class="primary" routerLink="/subscribe">Subscribe Now</button>
     </div>
   </section>
 
@@ -101,7 +101,7 @@
       <form [formGroup]="form">
 
         <input type="text" placeholder="Enter your email" formControlName="subscribeEemail" />
-        <button (click)="submitForm()">Subscribe</button>
+        <button class="primary" (click)="submitForm()">Subscribe</button>
 
       </form>
       <div>By subscribing you agree to with our <a href="">Privacy Policy</a> </div>
