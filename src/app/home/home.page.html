@@ -1,0 +1,127 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <div id="container-header">
+        <img src="./assets/images/logo.svg" alt="logo" />
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section class="top-area">
+    <div id="container">
+      <div>Discover the magic of our surprise box</div>
+      <div>Unleash your child's curiosity with our educational subscription box filled with fun and learning.</div>
+      <button routerLink="/subscribe" class="primary">Subscribe Now</button>
+      <img src="./assets/images/home.png" alt="" />
+    </div>
+  </section>
+
+
+  <section class="bottom-area">
+    <div id="container">
+      <div>Discover</div>
+      <div>How It Works: Subscribe and Receive Your Surprise Box</div>
+      <div>
+        Subscribe to our surprise subscription box and give your child the gift
+        of learning. Each month, we curate a box filled with educational
+        materials tailored to your child's age and interests.
+      </div>
+
+      <ion-grid class="steps">
+        <ion-row>
+          <ion-col size="12" size-sm="4">
+            <aside class="step">
+              <div>
+                <img src="./assets/images/subscribe.svg" alt="subscribe" />
+              </div>
+              <div class="title">
+                Step 1:<br />
+                Subscribe
+              </div>
+              <div class="content">
+                Select a subscription plan that suits your child's learning
+                needs and preferences.
+              </div>
+            </aside>
+          </ion-col>
+          <ion-col size="12" size-sm="4">
+            <aside class="step">
+              <div>
+                <img src="./assets/images/customize.svg" alt="customize" />
+              </div>
+              <div class="title">
+                Step 2:<br />
+                Personalise Your Box
+              </div>
+              <div class="content">
+                Tell us about your child's age, interests, and learning goals,
+                and we'll customize their surprise box accordingly.
+              </div>
+            </aside>
+          </ion-col>
+          <ion-col size="12" size-sm="4">
+            <aside class="step">
+              <div>
+                <img src="./assets/images/surprise.svg" alt="surprise" />
+              </div>
+              <div class="title">
+                Step 3:<br />
+                Receive Your Surprise Box
+              </div>
+              <div class="content">
+                Sit back and relax as your child eagerly awaits the arrival of
+                their monthly surprise box filled with engaging learning
+                materials.
+              </div>
+            </aside>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <button class="primary" routerLink="/subscribe">Subscribe Now</button>
+    </div>
+  </section>
+
+
+  <section class="footer">
+
+    <img src="./assets/images/footerlogo.svg" alt="" />
+    <div class="footer-menu">
+      <a href="">Link One</a>
+      <a href="">Link two</a>
+      <a href="">Link three</a>
+      <a href="">Link four</a>
+      <a href="">Link five</a>
+    </div>
+
+    <div class="subscribe">
+      <div>Subscribe</div>
+      <form [formGroup]="form">
+
+        <input type="text" placeholder="Enter your email" formControlName="subscribeEemail" />
+        <button class="primary" (click)="submitForm()">Subscribe</button>
+
+      </form>
+      <div>By subscribing you agree to with our <a href="">Privacy Policy</a> </div>
+    </div>
+
+    <hr />
+    <ion-row>
+      <ion-col size="12" size-sm="6">
+        <div class="footer-links">
+          <a href="">Privacy Policy</a>
+          <a href="">Terms of Service</a>
+          <a href="">Cookies Settings</a>
+        </div>
+      </ion-col>
+      <ion-col size="12" size-sm="6">
+        <div class="copy-right ">
+          &copy; 2023 MyEdu. All rights reserved.
+        </div>
+      </ion-col>
+    </ion-row>
+  </section>
+
+</ion-content>
